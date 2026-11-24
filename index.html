@@ -306,7 +306,7 @@ html:not(.pre) .hero-copy .pv-badge{opacity:1}
 .hero-copy{position:absolute;inset:auto 0 0;z-index:6}
 .hero-copy .wrap{padding-block:0 clamp(40px,8vh,90px)}
 .kicker{font-family:var(--ui);font-size:var(--t-ui);letter-spacing:.34em;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem;opacity:0;transform:translateY(10px);transition:opacity 1.2s var(--ease) .3s,transform 1.2s var(--ease) .3s}
-.wordmark{display:flex;align-items:center;font-family:var(--ui);font-weight:300;font-size:var(--t-hero);letter-spacing:.2em;line-height:1;margin:.3rem 0 .6rem -.04em;color:var(--paper);text-shadow:0 0 40px rgba(63,208,201,.28),0 2px 30px rgba(0,0,0,.6);white-space:nowrap}
+.wordmark{display:flex;align-items:center;font-family:var(--ui);font-weight:300;font-size:var(--t-hero);letter-spacing:.2em;line-height:1;margin:.3rem 0 .6rem -.04em;color:var(--paper);text-shadow:0 0 40px rgba(63,208,201,.28),0 2px 30px rgba(0,0,0,.6);white-space:nowrap;transition:text-shadow .45s var(--ease)}
 .wordmark .wl{display:inline-block;animation:inkrise 2.6s var(--ease) both;animation-delay:calc(.25s + var(--i) * 110ms)}
 .wordmark .wo{width:.78em;height:.78em;margin:0 .2em 0 .02em;position:relative}
 .o-ring{width:100%;height:100%;color:var(--paper);filter:drop-shadow(0 0 14px rgba(63,208,201,.55));animation:ospin 30s linear infinite}
@@ -368,8 +368,8 @@ html.revealed .scroll-cue{opacity:.8}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 html.rm .pin{height:auto}
 html.rm .stage{position:relative;height:auto;min-height:100svh}
-.letterbox i{position:absolute;left:0;right:0;height:calc(var(--lb,0) * 8vh);background:#000;z-index:8;pointer-events:none}
-.letterbox i:first-child{top:0}.letterbox i:last-child{bottom:0}
+.letterbox i{position:absolute;left:0;right:0;height:8vh;transform:scaleY(var(--lb,0));transform-origin:top;background:#000;z-index:8;pointer-events:none}
+.letterbox i:first-child{top:0}.letterbox i:last-child{bottom:0;transform-origin:bottom}
 
 /* ---------- 11. CRASH ---------- */
 .crash .stage{background:radial-gradient(ellipse at 50% 20%,#27354f,#0c1220 70%);color:#d9e6f5}
@@ -379,7 +379,7 @@ html.rm .stage{position:relative;height:auto;min-height:100svh}
 .crash .flicker{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 25%,rgba(207,228,255,.55),rgba(207,228,255,0) 70%);opacity:0;animation:eflick 6.5s ease-in-out infinite;pointer-events:none;will-change:opacity}
 @keyframes eflick{0%,100%{opacity:0}35%{opacity:.09}48%{opacity:.04}66%{opacity:.11}}
 .warnlight{position:absolute;left:12%;top:16%;width:26px;height:26px;border-radius:50%;background:var(--crimson);box-shadow:0 0 30px 14px rgba(179,38,45,.6);animation:warn 1.6s ease-in-out infinite}
-.warnlight::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 160px 60px rgba(179,38,45,.35);opacity:var(--alarm,0)}
+.warnlight::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 160px 60px rgba(179,38,45,.35);opacity:var(--alarm,0);will-change:opacity}
 @keyframes warn{0%,100%{opacity:.3}50%{opacity:1}}
 .crash .float{position:absolute;will-change:transform;z-index:3}
 .float-btn{padding:6px;background:#efe6cf;box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.3);transform-origin:center}
@@ -469,7 +469,7 @@ html.rm .crash .bloom,html.rm .crash .float:not(.float-btn),html.rm .impact{disp
 .sb .cols{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;align-items:end}
 .sb .bodycol,.sb .soulcol{position:relative;height:100%}
 .sb .bodyfig{position:absolute;left:50%;bottom:9%;width:min(280px,40vw);transform:translateX(-50%);will-change:transform;transform-origin:50% 100%;color:#05060d;filter:drop-shadow(0 0 1px rgba(217,210,195,.5)) drop-shadow(0 0 30px rgba(91,75,138,.25))}
-.sb .soulorb{position:absolute;left:50%;top:60%;width:38px;height:38px;margin:-19px;border-radius:50%;background:radial-gradient(circle,#fff,var(--soul) 40%,rgba(220,235,250,0) 70%);box-shadow:0 0 40px 14px rgba(220,235,250,.45),0 0 120px 40px rgba(63,208,201,.15);z-index:4}
+.sb .soulorb{will-change:transform;position:absolute;left:50%;top:60%;width:38px;height:38px;margin:-19px;border-radius:50%;background:radial-gradient(circle,#fff,var(--soul) 40%,rgba(220,235,250,0) 70%);box-shadow:0 0 40px 14px rgba(220,235,250,.45),0 0 120px 40px rgba(63,208,201,.15);z-index:4}
 .sb .soulorb::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(220,235,250,.35);animation:orbring 3s var(--ease) infinite}
 @keyframes orbring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.4);opacity:0}}
 .sb svg.thread{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 0 5px #DCEBFA)}
@@ -521,7 +521,7 @@ html.rm .crash .bloom,html.rm .crash .float:not(.float-btn),html.rm .impact{disp
 @media (max-width:900px){
   .colossus{left:50%;height:86svh;opacity:calc(.25 + var(--wp,0) * .45)}
   .who-copy{left:20px;right:20px;width:auto;top:auto;bottom:calc(8vh + 70px);transform:none}
-  .who-step{background:linear-gradient(180deg,rgba(6,6,12,0),rgba(6,6,12,.85) 18%);padding-top:2rem}
+  .who-step{align-self:end;background:linear-gradient(180deg,rgba(6,6,12,0),rgba(6,6,12,.85) 18%);padding-top:2rem}
   .who-khor{display:none}
   .shard-who{left:50%;top:40%}
 }
@@ -573,7 +573,7 @@ html.rm .who-step{grid-area:auto;opacity:1;transform:none;pointer-events:auto}
 /* sadness: cold rain, rings on the water line */
 .fx-sadness{background:linear-gradient(180deg,rgba(30,60,120,.36),rgba(8,16,40,.56) 72%)}
 .fx-sadness .rain{position:absolute;inset:-30% -20%;transform:rotate(9deg)}
-.fx-sadness .rain i{position:absolute;left:0;right:0;top:-256px;bottom:0;background-image:var(--rain);background-size:256px 256px;will-change:transform}
+.fx-sadness .rain i{position:absolute;left:0;right:0;top:-256px;bottom:0;background-image:var(--rain);background-size:256px 256px}
 .fx-sadness .rain.far i{top:-150px;background-size:150px 150px;opacity:.5}
 #reflections:is([data-emo="sadness"],[data-emo-out="sadness"]) .rain i{animation:rainA .42s linear infinite}
 #reflections:is([data-emo="sadness"],[data-emo-out="sadness"]) .rain.far i{animation:rainB .52s linear infinite}
@@ -587,18 +587,18 @@ html.rm .who-step{grid-area:auto;opacity:1;transform:none;pointer-events:auto}
 .fx-anger .cracks{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;filter:drop-shadow(0 0 6px #ff4a1a)}
 .fx-anger .cracks path{fill:none;stroke:#ff7a3a;stroke-width:2.2;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.5s var(--ease-out);vector-effect:non-scaling-stroke}
 #reflections[data-emo="anger"] .fx-anger .cracks path{stroke-dashoffset:0}
-.fx-anger .pulse{position:absolute;inset:0;background:radial-gradient(ellipse 70% 65% at 50% 50%,transparent 45%,rgba(150,18,8,.6) 100%);opacity:.3;will-change:opacity}
+.fx-anger .pulse{position:absolute;inset:0;background:radial-gradient(ellipse 70% 65% at 50% 50%,transparent 45%,rgba(150,18,8,.6) 100%);opacity:.3}
 #reflections:is([data-emo="anger"],[data-emo-out="anger"]) .fx-anger .pulse{animation:angpulse .92s ease-in-out infinite}
 @keyframes angpulse{0%,100%{opacity:.3}18%{opacity:.95}40%{opacity:.45}}
 /* regret: the tape rewinds, a clock runs backwards */
 .fx-regret{background:linear-gradient(180deg,rgba(70,58,110,.42),rgba(18,14,32,.62))}
-.fx-regret .tape{position:absolute;left:0;right:0;top:-260px;bottom:0;background:repeating-linear-gradient(180deg,transparent 0 128px,rgba(200,190,240,.07) 128px 131px,transparent 131px 260px);will-change:transform}
+.fx-regret .tape{position:absolute;left:0;right:0;top:-260px;bottom:0;background:repeating-linear-gradient(180deg,transparent 0 128px,rgba(200,190,240,.07) 128px 131px,transparent 131px 260px)}
 #reflections:is([data-emo="regret"],[data-emo-out="regret"]) .tape{animation:tape 3.2s linear infinite}
 @keyframes tape{to{transform:translate3d(0,260px,0)}}
 .fx-regret .clock{position:absolute;left:76%;top:max(220px,20%);width:min(56vh,52vw);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(200,190,240,.2)}
 @media (max-width:760px){.fx-regret .clock{left:50%;top:50%;width:86vw}}
 .fx-regret .clock::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from -1deg,rgba(200,190,240,.3) 0 2deg,transparent 2deg 30deg);-webkit-mask:radial-gradient(circle,transparent 0 86%,#000 86.5% 93%,transparent 93.5%);mask:radial-gradient(circle,transparent 0 86%,#000 86.5% 93%,transparent 93.5%)}
-.fx-regret .clock i{position:absolute;left:50%;bottom:50%;width:2px;margin-left:-1px;transform-origin:50% 100%;transform:rotate(var(--a,0deg));background:linear-gradient(rgba(200,190,240,.55),rgba(200,190,240,.12));border-radius:2px;will-change:transform}
+.fx-regret .clock i{position:absolute;left:50%;bottom:50%;width:2px;margin-left:-1px;transform-origin:50% 100%;transform:rotate(var(--a,0deg));background:linear-gradient(rgba(200,190,240,.55),rgba(200,190,240,.12));border-radius:2px}
 .fx-regret .clock .hh{height:25%;--a:130deg}
 .fx-regret .clock .mh{height:40%;width:1px}
 #reflections:is([data-emo="regret"],[data-emo-out="regret"]) .clock .mh{animation:ccw 5s linear infinite}
@@ -624,20 +624,20 @@ html.rm .who-step{grid-area:auto;opacity:1;transform:none;pointer-events:auto}
 @keyframes sunspin{from{transform:scale(2.4) rotate(0)}to{transform:scale(2.4) rotate(360deg)}}
 .fx-joy .smile{position:absolute;left:50%;top:18%;width:min(240px,40vw);transform:translate(-50%,-40%);fill:#fff6d8;stroke:#fff6d8;stroke-width:5;stroke-linecap:round;opacity:.16}
 .fx-joy .smile path{fill:none}
-.fx-joy .wrong{position:absolute;inset:0;background:linear-gradient(115deg,rgba(90,255,210,.1),rgba(255,70,190,.13) 50%,rgba(90,255,210,.08));opacity:0;will-change:opacity}
+.fx-joy .wrong{position:absolute;inset:0;background:linear-gradient(115deg,rgba(90,255,210,.1),rgba(255,70,190,.13) 50%,rgba(90,255,210,.08));opacity:0}
 #reflections:is([data-emo="joy"],[data-emo-out="joy"]) .fx-joy .wrong{animation:wrong 6.5s ease-in-out infinite}
 @keyframes wrong{0%,78%,100%{opacity:0}86%{opacity:1}92%{opacity:.35}}
 /* hatred: ink bleeds in from the edges; the people he loves still stand there, faintly */
 .fx-hatred{background:linear-gradient(180deg,rgba(40,0,6,.45),rgba(12,0,2,.72))}
 .fx-hatred .loved{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 3s var(--ease) 1.2s}
 #reflections[data-emo="hatred"] .fx-hatred .loved{opacity:1}
-.fx-hatred .bleed{position:absolute;inset:-12%;background:radial-gradient(ellipse 62% 58% at 50% 50%,transparent 52%,rgba(110,6,18,.6) 76%,rgba(48,0,6,.95) 100%);transform:scale(1.3);transition:transform 4s var(--ease-out);will-change:transform}
+.fx-hatred .bleed{position:absolute;inset:-12%;background:radial-gradient(ellipse 62% 58% at 50% 50%,transparent 52%,rgba(110,6,18,.6) 76%,rgba(48,0,6,.95) 100%);transform:scale(1.3);transition:transform 4s var(--ease-out)}
 #reflections[data-emo="hatred"] .fx-hatred .bleed{transform:scale(1)}
-.fx-hatred .pulse{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(139,15,26,.5),transparent 70%);opacity:.2;will-change:opacity}
+.fx-hatred .pulse{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(139,15,26,.5),transparent 70%);opacity:.2}
 #reflections:is([data-emo="hatred"],[data-emo-out="hatred"]) .fx-hatred .pulse{animation:hatpulse 1.7s ease-in-out infinite}
 @keyframes hatpulse{0%,100%{opacity:.2}12%{opacity:.75}26%{opacity:.35}38%{opacity:.6}}
 /* release: something gives, and light comes back into the room */
-.refl-fx .relflash{position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at var(--rx,50%) var(--ry,55%),rgba(255,255,255,.42),transparent 70%);opacity:0;will-change:opacity}
+.refl-fx .relflash{position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at var(--rx,50%) var(--ry,55%),rgba(255,255,255,.42),transparent 70%);opacity:0}
 #reflections.releasing .relflash{animation:relflash 1.9s var(--ease-out)}
 @keyframes relflash{0%{opacity:0}14%{opacity:1}100%{opacity:0}}
 html.rm #reflections .rain i,html.rm #reflections .rip,html.rm #reflections .tape,html.rm #reflections .clock i,html.rm #reflections .sun{animation:none!important}
@@ -692,7 +692,8 @@ html.rm .tribes .stage{height:auto}
 .cgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.9rem,1.8vw,1.5rem);perspective:1200px}
 @media (max-width:1000px){.cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.cgrid{grid-template-columns:minmax(0,1fr)}}
-.ccard{--rx:0deg;--ry:0deg;--sx:50%;--sy:50%;position:relative;display:block;text-align:left;background:#060d13;border:1px solid rgba(63,208,201,.16);overflow:hidden;transform:rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;transition:transform .5s var(--ease),border-color .5s,box-shadow .5s;will-change:transform}
+.ccard{--rx:0deg;--ry:0deg;--sx:50%;--sy:50%;position:relative;display:block;text-align:left;background:#060d13;border:1px solid rgba(63,208,201,.16);overflow:hidden;transform:rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;transition:transform .5s var(--ease),border-color .5s,box-shadow .5s}
+@media (hover:hover) and (pointer:fine){.ccard{will-change:transform}}
 .ccard:hover,.ccard:focus-visible{border-color:rgba(63,208,201,.55);box-shadow:0 30px 60px -25px rgba(0,0,0,.9),0 0 40px -10px rgba(63,208,201,.35)}
 .ccard .cimg,.ccard .cbody,.ccard b,.ccard .cnum,.ccard .csub{display:block}
 .ccard .cimg{position:relative;aspect-ratio:5/4;overflow:hidden;background:#04090d}
@@ -722,9 +723,9 @@ html.rm .tribes .stage{height:auto}
 .pol .tape{position:absolute;left:50%;top:-12px;width:70px;height:22px;transform:translateX(-50%) rotate(-3deg);background:rgba(232,220,190,.55);box-shadow:0 1px 3px rgba(0,0,0,.2);z-index:2}
 .pol .ph{position:relative;aspect-ratio:4/4.8;overflow:hidden;background:#1a1410}
 .pol .ph svg{width:100%;height:100%;display:block;filter:sepia(.35) contrast(1.04) brightness(1.04) saturate(.85);transition:filter 3s var(--ease)}
-.pol .ph::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 50%,rgba(40,25,10,.45)),linear-gradient(rgba(255,240,210,.08),rgba(80,40,10,.12));mix-blend-mode:multiply;pointer-events:none}
+.pol .ph::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 50%,rgba(40,25,10,.45)),linear-gradient(rgba(255,240,210,.08),rgba(80,40,10,.12));pointer-events:none}
 .pol.undeveloped .ph svg{filter:sepia(1) brightness(2.4) contrast(.4) blur(3px) saturate(0)}
-.pol.slip .ph svg{filter:grayscale(1) contrast(1.4) brightness(.9);transform:translateX(2px)}
+.pol.slip .ph svg{filter:grayscale(1) contrast(1.4) brightness(.9);transform:translateX(2px);transition:filter .45s var(--ease),transform .45s var(--ease)}
 .pol .nm{display:block;font-family:var(--hand);font-weight:600;font-size:1.65rem;line-height:1.1;margin-top:.6rem;color:#2a2018}
 .pol .role{font-family:var(--ui);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#7a4a28}
 .pol .det{font-size:.84rem;line-height:1.45;margin:.4rem 0 0;color:#3a2c20}
@@ -863,8 +864,8 @@ html.rm .tribes .stage{height:auto}
 .tz-iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
 /* ---------- 23. CURSOR LABEL, CANVASES, TOASTS ---------- */
-#current{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40}
-#soul{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:190}
+#current{position:fixed;inset:0 0 auto 0;width:100%;height:100vh;height:100lvh;pointer-events:none;z-index:40}
+#soul{position:fixed;inset:0 0 auto 0;width:100%;height:100vh;height:100lvh;pointer-events:none;z-index:190}
 .cursor-lbl{position:fixed;left:0;top:0;z-index:191;pointer-events:none;font-family:var(--ui);font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--soul);opacity:0;transition:opacity .3s;white-space:nowrap;text-shadow:0 0 8px rgba(0,0,0,.9)}
 .cursor-lbl.on{opacity:.95}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);z-index:170;background:rgba(5,6,16,.94);border:1px solid rgba(220,235,250,.25);padding:.75rem 1.3rem;font-family:var(--ui);font-size:.76rem;letter-spacing:.14em;opacity:0;pointer-events:none;transition:opacity .5s var(--ease),transform .5s var(--ease);max-width:calc(100vw - 32px);text-align:center}
@@ -1003,6 +1004,27 @@ html.rm .btn,html.rm .ccard{transform:none}
 html.lite .rays,html.lite .ov.twinkle,html.lite .ov.glint,html.lite .caustics::after,html.lite .crash .flicker{display:none}
 html.lite .fog,html.lite .ov.aurora,html.lite .ov.reeds,html.lite .ov.breathe,html.lite .ov.flicker-soft,html.lite .caustics,html.lite .hang,html.lite .sway,html.lite .fruit .f,html.lite .rivercard::after{animation:none}
 html.lite .ov.breathe{opacity:.6}
+
+/* ---------- 27. PHONES AND TABLETS (html.mob) ----------
+   A phone's graphics chip can only hold a handful of big layers before it starts dropping
+   them, which is what the flicker was, and every layer that animates costs frames. So on
+   phones the scenery is painted once and scrolls as one piece: no parallax layers, one fog
+   bank drifting instead of five, no film grain, and only small things move. The particles,
+   the light, the heartbeat glows and every interaction stay. */
+html.mob .layer{will-change:auto}
+html.mob .fog{width:100%;animation:none;will-change:auto;background-size:900px 100%}
+html.mob:not(.rm):not(.lite) .fog-mid{width:calc(100% + 900px);animation:fogdriftm 130s linear infinite reverse;will-change:transform}
+@keyframes fogdriftm{from{transform:translate3d(0,0,0)}to{transform:translate3d(-900px,0,0)}}
+html.mob .rays{animation:none;will-change:auto}
+html.mob #hero .sway,html.mob #hero .bob,html.mob #hero .steam,html.mob .hang{animation:none}
+html.mob .watchers,html.mob .grain{display:none}
+html.mob .track,html.mob .art-svg{will-change:auto}
+html.mob .caustics{inset:0;animation:none;will-change:auto;background-size:360px 360px}
+html.mob .caustics::after{display:none}
+html.mob .fx-joy .sun{display:none}
+html.mob .refl:not(.act) svg.art *{animation-play-state:paused}
+html.mob .sb svg.thread{filter:none}
+html.mob .sb svg.thread path{stroke-width:2.4}
 
 </style>
 </head>
@@ -1772,6 +1794,11 @@ const root = document.documentElement;
 const mqRM = matchMedia('(prefers-reduced-motion: reduce)');
 const mqSmall = matchMedia('(max-width: 767px)');
 const fine = matchMedia('(hover:hover) and (pointer:fine)');
+/* Phones and tablets get a lighter rendering profile (html.mob). Their graphics chips can only
+   hold a few large layers before they start dropping them (that is the flicker), and every
+   full-screen canvas or animated layer costs frames. */
+const mob = matchMedia('(hover:none) and (pointer:coarse)').matches || matchMedia('(max-width: 820px)').matches;
+root.classList.toggle('mob', mob);
 /* Motion: the system "reduce motion" setting is the default, but visitors can override it
    (many Windows machines have animations switched off for speed, not by need).
    Reduced motion keeps the Soul, the light and the fades; it removes parallax, pinned camera
@@ -1787,8 +1814,33 @@ ERY.Motion = {
 };
 const State = { t: 0, vel: 0, px: -999, py: -999, pvx: 0, pvy: 0, lastAct: performance.now(), entered: false, modal: 0 };
 
-ERY.U = { $, $$, clamp, lerp, sm, mulberry, hexRgb, rgbHex, mixHex, store, root, mqSmall, fine, get RM() { return RM; } };
+ERY.U = { $, $$, clamp, lerp, sm, mulberry, hexRgb, rgbHex, mixHex, store, root, mqSmall, fine, mob, get RM() { return RM; } };
 ERY.State = State;
+
+/* Geometry cache. The animation loop needs to know where each chapter is on every frame;
+   asking the browser (getBoundingClientRect) right after writing styles forces a full layout
+   each time, which is what made phones stutter. Sections only move when the page itself
+   changes size, so measure them once and work from scrollY in between. */
+ERY.Geo = (() => {
+  const map = new Map(); let dirty = true, ver = 0;
+  function measure() {
+    const y = scrollY;
+    map.forEach((g, el) => { const r = el.getBoundingClientRect(); g.top = r.top + y; g.h = r.height; });
+    dirty = false; ver++;
+  }
+  function rect(el) {
+    let g = map.get(el);
+    if (!g) { g = { top: 0, h: 0 }; map.set(el, g); dirty = true; }
+    if (dirty) measure();
+    const top = g.top - scrollY; return { top, bottom: top + g.h, height: g.h };
+  }
+  const inval = () => { dirty = true; };
+  addEventListener('resize', inval); addEventListener('orientationchange', inval);
+  document.addEventListener('ery:motion', inval);
+  if ('ResizeObserver' in window) new ResizeObserver(inval).observe(document.body);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(inval);
+  return { rect, inval, get ver() { if (dirty && map.size) measure(); return ver; } };
+})();
 
 /* Lite mode: weak or overloaded devices drop the costliest layers instead of flickering */
 ERY.Perf = (() => {
@@ -1983,7 +2035,7 @@ ERY.Chapters = (() => {
   }
   function frame() {
     const vh = innerHeight; let act = secs[0];
-    for (const s of secs) { const r = s.getBoundingClientRect(); if (r.top <= vh * .5 && r.bottom > vh * .5) { act = s; break; } }
+    for (const s of secs) { const r = ERY.Geo.rect(s); if (r.top <= vh * .5 && r.bottom > vh * .5) { act = s; break; } }
     nav.classList.toggle('solid', scrollY > 60);
     if (act === cur) return;
     cur = act;
@@ -1999,15 +2051,19 @@ ERY.Chapters = (() => {
 /* --------------------------------------------------------------- TINT */
 ERY.Tint = (() => {
   let cur = hexRgb(C.tints.violet), over = null, hex = C.tints.violet, last = '';
-  const secs = $$('[data-tint]'), host = $('#reflections') || root; /* only the reflections read it: keep the restyle local */
+  /* only the reflections' glow reads the tint: write it on that one element, so a colour fade
+     restyles one box instead of the whole chapter */
+  const secs = $$('[data-tint]'), host = $('#reflBloom') || root, hostSec = $('#reflections') || root;
   function frame() {
     const vh = innerHeight; let key = 'violet';
-    for (const s of secs) { const r = s.getBoundingClientRect(); if (r.top <= vh * .5 && r.bottom > vh * .5) { key = s.dataset.tint; break; } }
+    for (const s of secs) { const r = ERY.Geo.rect(s); if (r.top <= vh * .5 && r.bottom > vh * .5) { key = s.dataset.tint; break; } }
     const tgt = hexRgb(over || C.tints[key] || C.tints.violet);
     for (let i = 0; i < 3; i++) cur[i] = lerp(cur[i], tgt[i], .05);
     hex = rgbHex(cur[0], cur[1], cur[2]);
-    if (hex !== last) { host.style.setProperty('--emotion', hex); last = hex; }
+    /* only restyle the reflections while they are near the screen */
+    if (hex !== last && host !== root && ++skip >= (mob ? 4 : 1)) { skip = 0; const h = ERY.Geo.rect(hostSec); if (h.bottom > -vh && h.top < vh * 2) { host.style.setProperty('--emotion', hex); last = hex; } }
   }
+  let skip = 0;
   return { frame, override(h) { over = h; }, get hex() { return hex; } };
 })();
 
@@ -2018,6 +2074,8 @@ ERY.Current = (() => {
   const cache = {};
   function spr(hex) {
     if (cache[hex]) return cache[hex];
+    /* bounded: colour fades used to leave a new sprite behind on every frame */
+    const keys = Object.keys(cache); if (keys.length > 64) keys.forEach(k => { delete cache[k]; });
     const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d'), [r, gg, b] = hexRgb(hex);
     const gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
     gr.addColorStop(0, `rgba(${r},${gg},${b},1)`); gr.addColorStop(.25, `rgba(${r},${gg},${b},.5)`); gr.addColorStop(1, `rgba(${r},${gg},${b},0)`);
@@ -2035,13 +2093,30 @@ ERY.Current = (() => {
     for (let i = parts.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [parts[i], parts[j]] = [parts[j], parts[i]]; }
     scale = 1;
   }
-  /* the particles are soft blurs, so they never need more than one canvas pixel per CSS pixel */
-  function resize() { const dpr = Math.min(devicePixelRatio || 1, 1); W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); if (small !== mqSmall.matches) build(); }
+  /* The particles are soft blurs, so they never need more than one canvas pixel per CSS pixel
+     (three quarters of one on phones). The canvas is only reallocated when its size really
+     changes: a phone's address bar sliding in and out fires resize events, and reassigning a
+     canvas size wipes it, which showed as a flash. */
+  const K = mob ? .75 : 1;
+  function resize() {
+    W = innerWidth; H = cv.clientHeight || innerHeight;
+    const w = Math.round(W * K), h = Math.round(H * K);
+    if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+    ctx.setTransform(K, 0, 0, K, 0, 0);
+    if (small !== mqSmall.matches) build();
+  }
   function burst(x, y, hex, n = 14) { if (!on) return; for (let i = 0; i < n; i++) { const a = Math.random() * 6.28, s = 40 + Math.random() * 160; spec.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 30, life: 1, max: .8 + Math.random() * .9, hex, s: 5 + Math.random() * 7, g: 60 }); } }
   function ash(x, y, n = 18) { if (!on) return; for (let i = 0; i < n; i++) spec.push({ x: x + (Math.random() - .5) * 160, y: y + (Math.random() - .5) * 60, vx: 20 + Math.random() * 50, vy: -10 + Math.random() * 30, life: 1, max: 2 + Math.random() * 2, hex: '#b9b2a4', s: 3 + Math.random() * 4, g: 4 }); }
-  let adapt = 0, adaptN = 0;
+  let adapt = 0, adaptN = 0, acc = 0, hidden = false;
   function frame(t, dt) {
     if (!on) return;
+    /* under an open overlay nothing shows, so draw nothing */
+    if (State.modal) { if (!hidden) { ctx.clearRect(0, 0, W, H); hidden = true; } return; }
+    hidden = false;
+    /* phones and struggling devices redraw the drifting motes 30 times a second, not 60:
+       half the work, and slow motes look the same */
+    const slow = mob || ERY.Perf.lite;
+    if (slow) { acc += dt; if (acc < 1 / 31) return; dt = Math.min(.066, acc); acc = 0; }
     ctx.clearRect(0, 0, W, H); ctx.globalCompositeOperation = 'lighter';
     /* reduced motion keeps a calm, sparse current rather than none */
     const calm = RM ? .4 : 1, vel = State.vel * calm, active = Math.floor(parts.length * scale * (RM ? .45 : 1) * (ERY.Perf.lite ? .5 : 1));
@@ -2069,7 +2144,8 @@ ERY.Current = (() => {
     }
     ctx.globalAlpha = 1;
     adapt += dt; adaptN++;
-    if (adapt > 1) { if (adaptN < 48 && scale > .4) scale = Math.max(.4, scale - .2); else if (adaptN > 57 && scale < 1) scale = Math.min(1, scale + .1); adapt = 0; adaptN = 0; }
+    const fps = slow ? 30 : 60;
+    if (adapt > 1) { if (adaptN < fps * .8 && scale > .4) scale = Math.max(.4, scale - .2); else if (adaptN > fps * .95 && scale < 1) scale = Math.min(1, scale + .1); adapt = 0; adaptN = 0; }
   }
   /* directed emitter: embers, rain, golden motes for the reflections */
   function spray(x, y, hex, n, o = {}) {
@@ -2078,7 +2154,9 @@ ERY.Current = (() => {
     for (let i = 0; i < n; i++) spec.push({ x: x + (Math.random() - .5) * w, y, vx: vx + (Math.random() - .5) * spread, vy: vy + (Math.random() - .5) * spread * .5, life: 1, max: life * (.6 + Math.random() * .8), hex, s: size * (.6 + Math.random() * .8), g });
   }
   function start() { if (on) return; on = true; resize(); build(); addEventListener('resize', resize); }
-  function retint(hex) { const m = mixHex(P.teal, hex, .5); if (m !== moteHex) { moteHex = m; for (const p of parts) if (p.type === 'mote' && Math.random() < .02) p.hex = m; } }
+  /* mote colours snap to a coarse palette so a slow fade reuses a handful of sprites */
+  const snap = h => { const c = hexRgb(h).map(v => Math.min(255, Math.round(v / 20) * 20)); return rgbHex(c[0], c[1], c[2]); };
+  function retint(hex) { const m = snap(mixHex(P.teal, hex, .5)); if (m !== moteHex) { moteHex = m; for (const p of parts) if (p.type === 'mote' && Math.random() < .02) p.hex = m; } }
   return { start, frame, burst, ash, spray, retint, get on() { return on; } };
 })();
 
@@ -2088,7 +2166,13 @@ ERY.Soul = (() => {
   let W, H, on = false, targets = [], shards = [], lastRef = 0, lastMove = 0, rip = [], alpha = 0, aT = 0, glow = 1, nearFear = 0, nearWarm = 0, lblText = '';
   const S = { x: -100, y: -100, tx: -100, ty: -100, mood: '' }, trail = [];
   const COL = { cold: { core: '235,245,255', mid: '200,225,250', edge: '120,200,230', trail: '220,235,250' }, warm: { core: '255,242,216', mid: '255,212,150', edge: '255,170,90', trail: '255,222,172' } };
-  function resize() { const dpr = Math.min(devicePixelRatio || 1, ERY.Perf.lite ? 1 : 1.5); W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function resize() {
+    const k = Math.min(devicePixelRatio || 1, ERY.Perf.lite || mob ? 1 : 1.5); W = innerWidth; H = cv.clientHeight || innerHeight;
+    const w = Math.round(W * k), h = Math.round(H * k);
+    if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+    ctx.setTransform(k, 0, 0, k, 0, 0);
+  }
+  let drawn = false;
   function refresh() {
     const vh = innerHeight;
     targets = $$('[data-soul]').map(el => { const r = el.getBoundingClientRect(); return { t: el.dataset.soul, x: r.left + r.width / 2, y: r.top + r.height / 2, w: r.width, h: r.height, top: r.top, bottom: r.bottom }; }).filter(g => g.bottom > -50 && g.top < vh + 50 && g.w > 0);
@@ -2105,8 +2189,13 @@ ERY.Soul = (() => {
   }
   function frame(t, dt) {
     if (!on) return;
+    /* on a touch screen the Soul only appears under a finger: when it has faded out there is
+       nothing to draw, so leave the canvas alone instead of clearing it 60 times a second */
+    const mouse = root.classList.contains('soul-on');
+    if (!mouse && aT === 0 && alpha < .01) { if (drawn) { ctx.clearRect(0, 0, W, H); drawn = false; } alpha = 0; return; }
     const now = performance.now();
-    if (now - lastRef > 250) { refresh(); lastRef = now; }
+    if (!mouse) { targets = []; shards = []; }
+    else if (now - lastRef > 250) { refresh(); lastRef = now; }
     let tx = S.tx, ty = S.ty; nearFear = 0; nearWarm = 0;
     if (!RM && now - lastMove > 8000 && aT > 0) { tx += Math.sin(t * .7) * 90; ty += Math.cos(t * .5) * 60; }
     for (const g of targets) {
@@ -2125,8 +2214,9 @@ ERY.Soul = (() => {
     const glowT = (S.mood === 'dim' ? .55 : S.mood === 'bright' ? 1.6 : 1) * (1 + nearWarm * .8) * (warm ? 1.2 : 1); glow += (glowT - glow) * .08;
     trail.push({ x: S.x, y: S.y }); while (trail.length > (RM ? 2 : 26)) trail.shift();
     lbl.style.transform = `translate(${(S.x + 20).toFixed(1)}px,${(S.y + 14).toFixed(1)}px)`;
-    ctx.clearRect(0, 0, W, H);
+    if (drawn) { ctx.clearRect(0, 0, W, H); drawn = false; }
     if (alpha < .01) return;
+    drawn = true;
     const r = 7 * (1 - .45 * nearFear) * (1 + nearWarm * .4);
     ctx.globalCompositeOperation = 'lighter'; ctx.lineCap = 'round';
     for (let i = 1; i < trail.length; i++) { const a = i / trail.length; ctx.strokeStyle = `rgba(${c.trail},${(a * .45 * alpha * glow).toFixed(3)})`; ctx.lineWidth = Math.max(.5, a * r * .9); ctx.beginPath(); ctx.moveTo(trail[i - 1].x, trail[i - 1].y); ctx.lineTo(trail[i].x, trail[i].y); ctx.stroke(); }
@@ -2769,7 +2859,8 @@ ERY.Audio = (() => {
     sfxG = ctx.createGain(); sfxG.gain.value = .9;
     sfxVolG = ctx.createGain(); sfxVolG.gain.value = volSfx; sfxG.connect(sfxVolG); sfxVolG.connect(pre);
     /* reverb, fed through one send per level so each slider also scales its own tail */
-    rev = ctx.createConvolver(); rev.buffer = impulse(3.4, 2.1); revIn = ctx.createGain(); revIn.gain.value = 1;
+    /* a shorter hall on phones: the reverb is the single most expensive thing in the mix */
+    rev = ctx.createConvolver(); rev.buffer = impulse(ERY.U.mob ? 2 : 3.4, 2.1); revIn = ctx.createGain(); revIn.gain.value = 1;
     revInM = ctx.createGain(); revInM.gain.value = volMusic; revInM.connect(revIn);
     revInS = ctx.createGain(); revInS.gain.value = volSfx; revInS.connect(revIn);
     const revOut = ctx.createGain(); revOut.gain.value = .55;
@@ -2808,7 +2899,8 @@ ERY.Audio = (() => {
 
   /* ---------------------------------------------------------- AMBIENCE */
   function buildAmbience() {
-    const mk = (name, out) => { const g = ctx.createGain(); g.gain.value = 0; g.connect(out || ambG); amb[name] = g; return g; };
+    /* every bed starts unplugged and silent; setAmb plugs it in when its chapter asks for it */
+    const mk = (name, out) => { const g = ctx.createGain(); g.gain.value = 0; g._out = out || ambG; g._on = false; amb[name] = g; return g; };
     /* wind: bandpassed noise that breathes */
     { const n = noiseSrc(), bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 520; bp.Q.value = .8; lfo(.07, 260, bp.frequency); const g = mk('wind'); const sw = ctx.createGain(); sw.gain.value = .07; lfo(.11, .035, sw.gain); n.connect(bp); bp.connect(sw); sw.connect(g); n.start(); const s2 = ctx.createGain(); s2.gain.value = .25; g.connect(s2); s2.connect(revInM); }
     /* river: low rushing water with a bubbling flutter */
@@ -2825,7 +2917,16 @@ ERY.Audio = (() => {
     /* vinyl-ish crackle bed for the crew memories */
     { const g = mk('crackle'); const n = noiseSrc(), hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 3800; const cg = ctx.createGain(); cg.gain.value = .006; n.connect(hp); hp.connect(cg); cg.connect(g); n.start(); }
   }
-  function setAmb(name, v, tc = 1.2) { if (amb[name]) amb[name].gain.setTargetAtTime(v, ctx.currentTime, tc); }
+  /* Ambience beds (wind, river, rain, ship...) all run all the time; a silent one is unplugged
+     from the mix after it fades out, so the audio engine stops computing it, and plugged back
+     in when it is needed again. */
+  function setAmb(name, v, tc = 1.2) {
+    const g = amb[name]; if (!g) return;
+    clearTimeout(g._park);
+    if (v > 0 && g._out && !g._on) { g.connect(g._out); g._on = true; }
+    g.gain.setTargetAtTime(v, ctx.currentTime, tc);
+    if (v <= 0 && g._out && g._on) g._park = setTimeout(() => { try { g.disconnect(); } catch (e) {} g._on = false; }, tc * 6000 + 300);
+  }
 
   /* ---------------------------------------------------------- INSTRUMENTS */
   function out(dest, pan = 0) {
@@ -3322,7 +3423,14 @@ ERY.Scene = (() => {
   /* Scenery layers stay completely still inside, so the browser paints each one once and then
      only moves it. Anything that glows, twinkles or sways lives on its own thin overlay
      (same viewBox) that is faded or tilted as a whole on the GPU: no repaint, no flicker. */
-  const ov = (inner, cls, style = '') => svg(inner, `class="ov ${cls}"${style ? ` style="${style}"` : ''}`);
+  /* On phones there is no room on the graphics chip for a dozen extra layers, so each overlay
+     is drawn still, at a fixed brightness (`still`, 0 leaves it out), as part of the painting. */
+  const MOB = ERY.U.mob;
+  const ov = (inner, cls, style = '', still = 0) => {
+    if (!inner) return '';
+    if (MOB) return still ? svg(`<g opacity="${still}">${inner}</g>`, 'class="ov"') : '';
+    return svg(inner, `class="ov ${cls}"${style ? ` style="${style}"` : ''}`);
+  };
   function ridge(base, amp, seed, steps = 48) {
     const r = mulberry(seed); let d = `M-20 900 L-20 ${base}`;
     for (let i = 0; i <= steps; i++) { const x = i * (1640 / steps) - 20; const y = base + Math.sin(i * .37 + seed) * amp * .6 + (r() - .5) * amp; d += ` L${x.toFixed(0)} ${y.toFixed(0)}`; }
@@ -3360,7 +3468,7 @@ ERY.Scene = (() => {
       if (r() > .8) { r(); tw[i % 2] += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(rad * 1.6).toFixed(1)}" fill="#f4f9ff"/>`; }
     }
     $('#L0').innerHTML = svg(`<defs><linearGradient id="skyg" x1="0" x2="1"><stop offset="0" stop-color="#0d1030"/><stop offset=".38" stop-color="#1a1a44"/><stop offset=".5" stop-color="#3a2c5e"/><stop offset=".63" stop-color="#7a4a4c"/><stop offset=".86" stop-color="#c9873f"/><stop offset="1" stop-color="#E0A24A"/></linearGradient><filter id="bl"><feGaussianBlur stdDeviation="28"/></filter></defs><rect width="1600" height="900" fill="url(#skyg)"/>${stars}`)
-      + ov(`<g filter="url(#bl)" opacity=".5"><ellipse cx="520" cy="200" rx="420" ry="26" fill="#3FD0C9" opacity=".35"/><ellipse cx="640" cy="280" rx="360" ry="20" fill="#8E7FB8" opacity=".5"/><ellipse cx="900" cy="150" rx="300" ry="18" fill="#3FD0C9" opacity=".25"/></g>`, 'aurora')
+      + ov(`<g filter="url(#bl)" opacity=".5"><ellipse cx="520" cy="200" rx="420" ry="26" fill="#3FD0C9" opacity=".35"/><ellipse cx="640" cy="280" rx="360" ry="20" fill="#8E7FB8" opacity=".5"/><ellipse cx="900" cy="150" rx="300" ry="18" fill="#3FD0C9" opacity=".25"/></g>`, 'aurora', '', 1)
       + ov(tw[0], 'twinkle') + ov(tw[1], 'twinkle', 'animation-duration:9.4s;animation-delay:-3.7s');
     $('#L1').innerHTML = svg(`<defs><radialGradient id="moonh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#dcebfa" stop-opacity=".45"/><stop offset="1" stop-color="#dcebfa" stop-opacity="0"/></radialGradient><radialGradient id="dawnh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffbf6a" stop-opacity=".8"/><stop offset="1" stop-color="#E0A24A" stop-opacity="0"/></radialGradient></defs><circle cx="270" cy="190" r="170" fill="url(#moonh)"/><circle cx="270" cy="190" r="46" fill="#dcebfa" opacity=".92"/><circle cx="258" cy="182" r="8" fill="#c4d4e6" opacity=".5"/><circle cx="284" cy="204" r="5" fill="#c4d4e6" opacity=".45"/><ellipse cx="1330" cy="610" rx="640" ry="280" fill="url(#dawnh)"/>`);
     let spires = '', archs = '';
@@ -3380,16 +3488,16 @@ ERY.Scene = (() => {
     <rect x="0" y="430" width="1600" height="300" fill="url(#whoVeil)"/>
     <ellipse cx="1190" cy="526" rx="130" ry="46" fill="url(#whoHeart)" opacity=".3"/>`)
       /* its heart: a separate glow that the heartbeat fades in and out */
-      + ov(`<ellipse cx="1190" cy="526" rx="130" ry="46" fill="url(#whoHeart)"/>`, 'hbeat');
+      + ov(`<ellipse cx="1190" cy="526" rx="130" ry="46" fill="url(#whoHeart)"/>`, 'hbeat', '', .55);
     let ru = ''; const rg = ['', ''];
     [[210, 610, 't'], [470, 620, 's'], [700, 606, 't'], [1250, 612, 't'], [1470, 618, 's']].forEach(([x, y, k], i) => {
       ru += k === 't' ? `<path d="M${x} ${y}V${y - 70}L${x + 12} ${y - 96}L${x + 26} ${y - 62}V${y}Z" fill="#101330"/>` : `<path d="M${x} ${y}h20v-14h20v-14h20v-14h20v38z" fill="#101330"/>`;
       rg[i % 2] += `<ellipse cx="${x + 18}" cy="${y}" rx="30" ry="5" fill="#3FD0C9"/>`;
     });
-    $('#L3').innerHTML = svg(`<path d="${ridge(640, 30, 13)}" fill="#0f1230"/>${ru}`) + ov(rg[0], 'flicker-soft') + ov(rg[1], 'flicker-soft', 'animation-delay:-3.4s');
+    $('#L3').innerHTML = svg(`<path d="${ridge(640, 30, 13)}" fill="#0f1230"/>${ru}`) + ov(rg[0], 'flicker-soft', '', .35) + ov(rg[1], 'flicker-soft', 'animation-delay:-3.4s', .35);
     const fx = ['', ''];
     $('#L4').innerHTML = svg(`<defs><radialGradient id="cg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5B4B8A" stop-opacity=".55"/><stop offset=".6" stop-color="#3FD0C9" stop-opacity=".12"/><stop offset="1" stop-color="#3FD0C9" stop-opacity="0"/></radialGradient></defs>${trees(5, 7, { skip: [930, 1420], fx })}`)
-      + ov(fx[0], 'breathe') + ov(fx[1], 'breathe', 'animation-delay:-2.1s');
+      + ov(fx[0], 'breathe', '', .7) + ov(fx[1], 'breathe', 'animation-delay:-2.1s', .7);
     let vign = ''; const vl = ['', ''];
     [[300, 792, '#E0A24A'], [560, 774, '#dcebfa'], [1000, 718, '#E0A24A'], [1380, 684, '#3FD0C9']].forEach(([x, y, c], i) => {
       vign += `<rect x="${x}" y="${y}" width="34" height="22" fill="${c}" opacity=".1" rx="2"/>`;
@@ -3398,9 +3506,9 @@ ERY.Scene = (() => {
     /* the river: drawn once with its ripples; the shimmer is two still sets of glints that trade places */
     const glint = off => `<g filter="url(#flow)"><path d="${RP}" stroke="#bff6f2" stroke-opacity=".6" stroke-width="5" fill="none" stroke-dasharray="12 54" stroke-dashoffset="${off}"/></g>`;
     $('#L5').innerHTML = svg(`<defs><filter id="flow" x="-5%" y="-30%" width="110%" height="160%"><feTurbulence type="fractalNoise" baseFrequency=".008 .03" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="14"/></filter><filter id="rb"><feGaussianBlur stdDeviation="14"/></filter><radialGradient id="whoRefl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd58a" stop-opacity=".75"/><stop offset="1" stop-color="#ffd58a" stop-opacity="0"/></radialGradient></defs><path d="${RP}" stroke="#3FD0C9" stroke-opacity=".28" stroke-width="150" fill="none" filter="url(#rb)"/><g filter="url(#flow)"><path d="${RP}" stroke="#0f5560" stroke-width="86" fill="none"/><path d="${RP}" stroke="#3FD0C9" stroke-opacity=".7" stroke-width="9" fill="none" stroke-dasharray="40 26"/></g>${vign}`)
-      + ov(glint(0), 'glint') + ov(glint(-33), 'glint', 'animation-delay:-2.6s')
-      + ov(vl[0], 'flicker-soft', 'animation-duration:9s') + ov(vl[1], 'flicker-soft', 'animation-duration:11s;animation-delay:-5s')
-      + ov(`<ellipse cx="1195" cy="700" rx="100" ry="12" fill="url(#whoRefl)"/>`, 'hbeat');
+      + ov(glint(0), 'glint', '', .5) + ov(glint(-33), 'glint', 'animation-delay:-2.6s')
+      + ov(vl[0], 'flicker-soft', 'animation-duration:9s', .45) + ov(vl[1], 'flicker-soft', 'animation-duration:11s;animation-delay:-5s', .45)
+      + ov(`<ellipse cx="1195" cy="700" rx="100" ry="12" fill="url(#whoRefl)"/>`, 'hbeat', '', .5);
     $('#L6').innerHTML = svg(`<defs><radialGradient id="sg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff"/><stop offset=".25" stop-color="#dcebfa" stop-opacity=".8"/><stop offset="1" stop-color="#dcebfa" stop-opacity="0"/></radialGradient></defs><path d="M560 900 L620 836 Q930 800 1260 846 L1320 900Z" fill="#06070f"/><g transform="translate(940 822) scale(1.45)"><path d="M-15 0L-19 -50Q-21 -76 -11 -88L-8 -94Q0 -101 8 -94L11 -88Q21 -76 19 -50L15 0Q0 5 -15 0Z" fill="#05060d" stroke="#E0A24A" stroke-opacity=".45" stroke-width=".8"/><path class="sway" d="M-15 -8Q-32 -6 -34 8L-14 2Z" fill="#05060d"/><circle cx="0" cy="-104" r="9" fill="#05060d"/><path d="M6 -106L10.5 -107.5" stroke="#ffd58a" stroke-width="1.8" stroke-linecap="round"/><path d="M12 -86Q25 -72 23 -62" stroke="#05060d" stroke-width="6" fill="none" stroke-linecap="round"/><rect x="19.5" y="-70" width="8" height="8" rx="1.5" fill="#05060d" stroke="#d9d2c3" stroke-opacity=".5" stroke-width=".7"/><path class="steam" d="M24 -73q-3 -5 0 -10" stroke="#dcebfa" stroke-width="1" fill="none"/></g><g class="bob"><circle cx="890" cy="676" r="26" fill="url(#sg)"/><circle cx="890" cy="676" r="5" fill="#fff"/></g>`);
     /* reeds: three still clumps, each leaned by the wind as one piece (a GPU skew, no repaint) */
     const reeds = ['', '', '']; const rr = mulberry(21);
@@ -3408,10 +3516,10 @@ ERY.Scene = (() => {
       for (let s = 0; s < 7; s++) { const x = cx + s * 9 + rr() * 10, h = 70 + edge * 190 * (.5 + rr() * .7) + rr() * 50, bend = (rr() - .3) * 50; g += `<path d="M${x.toFixed(0)} 912Q${(x + bend * .3).toFixed(0)} ${(912 - h * .55).toFixed(0)} ${(x + bend).toFixed(0)} ${(912 - h).toFixed(0)}" stroke="#04050c" stroke-width="${(3 + rr() * 3).toFixed(1)}" fill="none" stroke-linecap="round"/>`; if (rr() > .72) g += `<ellipse cx="${(x + bend).toFixed(0)}" cy="${(912 - h - 6).toFixed(0)}" rx="2.6" ry="9" fill="#E0A24A" opacity=".85"/>`; }
       reeds[i % 3] += g; }
     $('#L7').innerHTML = svg(`<rect y="880" width="1600" height="30" fill="#04050c"/>`)
-      + ov(reeds[0], 'reeds') + ov(reeds[1], 'reeds', 'animation-duration:7.4s;animation-delay:-2.2s') + ov(reeds[2], 'reeds', 'animation-duration:5.6s;animation-delay:-4.1s');
+      + ov(reeds[0], 'reeds', '', 1) + ov(reeds[1], 'reeds', 'animation-duration:7.4s;animation-delay:-2.2s', 1) + ov(reeds[2], 'reeds', 'animation-duration:5.6s;animation-delay:-4.1s', 1);
     const ffx = ['', ''], fs = $('#forestScenery'); fs.style.opacity = '.55';
     fs.innerHTML = svg(`<defs><radialGradient id="cgf" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5B4B8A" stop-opacity=".5"/><stop offset="1" stop-color="#3FD0C9" stop-opacity="0"/></radialGradient></defs><path d="${ridge(640, 80, 31)}" fill="#0a0b1c" opacity=".55"/>${trees(9, 8, { id: 'f', top: 200, fx: ffx })}`)
-      + ov(ffx[0], 'breathe') + ov(ffx[1], 'breathe', 'animation-delay:-2.1s');
+      + ov(ffx[0], 'breathe', '', .7) + ov(ffx[1], 'breathe', 'animation-delay:-2.1s', .7);
     const w = $('#watchers'); [[10, 46, 7], [24, 60, 5], [38, 40, 6], [78, 52, 6], [90, 44, 7]].forEach(([x, y, s]) => { const e = document.createElement('div'); e.className = 'eyes'; e.style.cssText = `left:${x}%;top:${y}%;--s:${s}px`; e.innerHTML = '<i></i><i></i>'; w.appendChild(e); });
   }
 
@@ -3601,12 +3709,21 @@ ERY.Sections = (() => {
     cr.amp = lerp(cr.amp, amp, .18);
     cr.shaker.style.transform = cr.amp > .15 ? `translate3d(${((Math.sin(t * 31) * .6 + Math.sin(t * 17.3) * .4) * cr.amp).toFixed(1)}px,${((Math.sin(t * 23.7) * .6 + Math.sin(t * 13.1) * .4) * cr.amp).toFixed(1)}px,0)` : '';
     if (p === cr.p) return; cr.p = p;
+    /* cheap updates (moved layers, text) every frame */
     cr.lines.forEach(l => { const at = +l.dataset.at, a = clamp((p - at) / .035) * (1 - clamp((p - at - .095) / .035)); l.style.opacity = a.toFixed(3); l.style.transform = `translate(-50%,${((1 - a) * 12).toFixed(1)}px)`; });
-    cr.bloom.style.setProperty('--r', (clamp((p - .84) / .16) * 150).toFixed(1) + '%');
-    cr.planet.setAttribute('transform', `translate(0 ${(-p * 340).toFixed(0)}) rotate(${(p * 8).toFixed(2)} 800 900)`);
     cr.cup.style.transform = `translate(${(-p * 30).toFixed(1)}vw,${(-p * 12).toFixed(1)}vh) rotate(${(p * 220).toFixed(0)}deg)`;
     cr.glass.style.transform = `translate(${(p * 40).toFixed(1)}vw,${(-p * 18).toFixed(1)}vh) rotate(${(-p * 160).toFixed(0)}deg)`;
     cr.draw.style.transform = `translate(${(-p * 26).toFixed(1)}vw,${(p * 30).toFixed(1)}vh) rotate(${(p * 70 - 6).toFixed(0)}deg)`;
+    cr.warn.style.setProperty('--alarm', clamp((p - .1) / .5).toFixed(2));
+    cr.lb.style.setProperty('--lb', (clamp(p / .06) * (1 - clamp((p - .92) / .08))).toFixed(3));
+    /* impact: a soft bloom of light, capped well below a full white flash */
+    cr.impact.style.opacity = (p > .79 && p < .9 ? clamp(1 - Math.abs(p - .815) / .04) * .5 : 0).toFixed(3);
+    /* everything below repaints the whole ship drawing; a phone does it only when the descent
+       has moved far enough to see, instead of on every scrolled pixel */
+    if ((ERY.U.mob || ERY.Perf.lite) && Math.abs(p - (cr.sp == null ? -1 : cr.sp)) < .006 && p > 0 && p < 1) return;
+    cr.sp = p;
+    cr.bloom.style.setProperty('--r', (clamp((p - .84) / .16) * 150).toFixed(1) + '%');
+    cr.planet.setAttribute('transform', `translate(0 ${(-p * 340).toFixed(0)}) rotate(${(p * 8).toFixed(2)} 800 900)`);
     const warp = p * p * 150;
     cr.streaks.forEach(l => l.setAttribute('y2', (l._y + warp).toFixed(0)));
     const ck = clamp((p - .42) / .34);
@@ -3616,10 +3733,6 @@ ERY.Sections = (() => {
     cr.hull.setAttribute('width', (+cr.hull.dataset.w * hull / 100).toFixed(0)); cr.hull.setAttribute('fill', hull < 35 ? '#ff5a5f' : '#3FD0C9');
     cr.hullT.textContent = hull + '%'; cr.hullT.classList.toggle('warn', hull < 35);
     cr.alt.textContent = Math.max(0, Math.round(41200 * Math.pow(1 - clamp(p / .82), 2))).toLocaleString('en').replace(/,/g, ' ') + ' m';
-    cr.warn.style.setProperty('--alarm', clamp((p - .1) / .5).toFixed(2));
-    cr.lb.style.setProperty('--lb', (clamp(p / .06) * (1 - clamp((p - .92) / .08))).toFixed(3));
-    /* impact: a soft bloom of light, capped well below a full white flash */
-    cr.impact.style.opacity = (p > .79 && p < .9 ? clamp(1 - Math.abs(p - .815) / .04) * .5 : 0).toFixed(3);
   }
 
   /* ---------------------------------------------------------------- FOREST */
@@ -3663,13 +3776,23 @@ ERY.Sections = (() => {
 
   /* ---------------------------------------------------------------- SOUL + BODY */
   const sb = {};
-  function soulbody() { Object.assign(sb, { orb: $('#soulorb'), body: $('#bodyfig'), col: $('.soulcol'), path: $('#threadp'), stage: $('#soulbody .stage') }); }
-  function sbFrame(p, t) {
+  function soulbody() { Object.assign(sb, { orb: $('#soulorb'), body: $('#bodyfig'), col: $('.soulcol'), path: $('#threadp'), stage: $('#soulbody .stage'), key: '' }); }
+  /* where the body and the soul's column sit inside the stage: measured once per layout,
+     not three times a frame */
+  function sbMeasure() {
     const st = sb.stage.getBoundingClientRect(), bb = sb.body.getBoundingClientRect(), sc = sb.col.getBoundingClientRect();
-    const dx = clamp(State.px / innerWidth - .5, -.5, .5) * 90, rise = -p * sc.height * .36 + Math.sin(t * 1.4) * 7;
+    sb.g = { bx: bb.left + bb.width / 2 - st.left, by: bb.top + bb.height * .3 - st.top, cx: sc.left + sc.width / 2 - st.left, cy: sc.top + sc.height * .6 - st.top, ch: sc.height };
+    sb.ver = ERY.Geo.ver;
+  }
+  function sbFrame(p, t) {
+    if (!sb.g || sb.ver !== ERY.Geo.ver) sbMeasure();
+    const g = sb.g, still = ERY.U.mob || ERY.Perf.lite;
+    /* the soul bobs on its thread; on phones it only moves as you scroll, so the thread is not
+       redrawn every frame */
+    const dx = still ? 0 : clamp(State.px / innerWidth - .5, -.5, .5) * 90, rise = -p * g.ch * .36 + (still ? 0 : Math.sin(t * 1.4) * 7);
+    const key = dx.toFixed(1) + '|' + rise.toFixed(1) + '|' + p.toFixed(3); if (key === sb.key) return; sb.key = key;
     sb.orb.style.transform = `translate(${dx.toFixed(1)}px,${rise.toFixed(1)}px)`;
-    const bx = bb.left + bb.width / 2 - st.left, by = bb.top + bb.height * .3 - st.top;
-    const ex = sc.left + sc.width / 2 + dx - st.left, ey = sc.top + sc.height * .6 + rise - st.top, slack = (1 - p) * 170 + 10;
+    const bx = g.bx, by = g.by, ex = g.cx + dx, ey = g.cy + rise, slack = (1 - p) * 170 + 10;
     sb.path.setAttribute('d', `M${bx.toFixed(1)} ${by.toFixed(1)}Q${((bx + ex) / 2).toFixed(1)} ${(Math.max(by, ey) + slack).toFixed(1)} ${ex.toFixed(1)} ${ey.toFixed(1)}`);
     sb.path.setAttribute('stroke-opacity', (.5 + p * .5).toFixed(2));
   }
@@ -3692,6 +3815,7 @@ ERY.Sections = (() => {
     wh.btn.setAttribute('aria-pressed', 'false');
     wh.btn.addEventListener('click', () => setListen(!wh.listening));
     document.addEventListener('ery:chapter', e => { if (e.detail !== 'who' && wh.listening) setListen(false); });
+    document.addEventListener('ery:motion', () => { wh.wk = ''; });
     if (ERY.Mem.has('snow')) wh.shard.hidden = true;
   }
   function selectWho(i, silent) {
@@ -3709,8 +3833,15 @@ ERY.Sections = (() => {
     if (!v) { wh.listenT = 0; wh.fill.style.strokeDashoffset = 119.4; }
   }
   function whoFrame(p, dt) {
-    const wp = sm(clamp(p / .5)).toFixed(3);
-    wh.col.style.setProperty('--wp', wp); if (wh.fogF) wh.fogF.style.setProperty('--wp', wp);
+    /* the colossus rises: set its transform and opacity directly. A custom property on it would
+       restyle every one of the hundreds of shapes inside it on every frame */
+    const w = sm(clamp(p / .5)), wk = w.toFixed(3);
+    if (wk !== wh.wk) {
+      wh.wk = wk;
+      if (ERY.U.RM) { wh.col.style.transform = ''; wh.col.style.opacity = ''; }
+      else { wh.col.style.transform = `translateX(-50%) translateY(${((1 - w) * 9).toFixed(2)}%) scale(${(.9 + w * .12).toFixed(4)})`; wh.col.style.opacity = (innerWidth <= 900 ? .25 + w * .45 : .35 + w * .65).toFixed(3); }
+      if (wh.fogF) wh.fogF.style.opacity = (.25 + (1 - w) * .45).toFixed(3);
+    }
     wh.steps.forEach(s => s.classList.toggle('on', p >= +s.dataset.from && p < +s.dataset.to));
     const kp = clamp((p - .8) / .16), n = Math.floor(kp * wh.khorToks.length + 1e-4);
     wh.khor.classList.toggle('on', p > .76);
@@ -3751,7 +3882,7 @@ ERY.Sections = (() => {
     };
     const deactivate = () => {
       const b = rf.active; if (!b) return;
-      rf.active = null; b.style.setProperty('--still', '0'); if (!b.classList.contains('released')) b.classList.remove('spoke');
+      rf.active = null; b.classList.remove('act'); b.style.setProperty('--still', '0'); if (!b.classList.contains('released')) b.classList.remove('spoke');
       ERY.Tint.override(null); ERY.Soul.mood = ''; setEmo(null);
     };
     sec.addEventListener('pointermove', e => { rf.mx = e.clientX; rf.my = e.clientY; }, { passive: true });
@@ -3764,7 +3895,7 @@ ERY.Sections = (() => {
       b.innerHTML = `<span class="nm" aria-hidden="true">${r.n}</span>${ERY.Scene.reflArt(r.k)}<svg class="still" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9"/></svg><span class="tz" aria-hidden="true">${r.t}</span><span class="slash"></span><span class="rel" aria-hidden="true">Release</span>`;
       const activate = () => {
         if (rf.active === b) return; deactivate();
-        rf.active = b; rf.t0 = performance.now(); ERY.Tint.override(r.c); ERY.Soul.mood = r.mood;
+        rf.active = b; b.classList.add('act'); rf.t0 = performance.now(); ERY.Tint.override(r.c); ERY.Soul.mood = r.mood;
         if (!b.classList.contains('released')) setEmo(r.k);
       };
       /* touch: the first tap stands before a reflection, the second releases it */
@@ -3798,14 +3929,16 @@ ERY.Sections = (() => {
       if (f >= 1 && !b.classList.contains('spoke')) { b.classList.add('spoke'); $('#reflSay').textContent = `“${b._r.t}”`; A('whisper'); }
     }
     const k = rf.k; if (!k) return;
-    const s = rf.sec.getBoundingClientRect(), top = Math.max(0, s.top), bot = Math.min(innerHeight, s.bottom);
+    const g = ERY.Geo.rect(rf.sec), top = Math.max(0, g.top), bot = Math.min(innerHeight, g.bottom);
     if (bot - top < 120) return;
+    const s = { left: 0, width: innerWidth, right: innerWidth };
     const em = EMIT[k];
     if (em) { rf.emitT -= dt || .016; if (rf.emitT <= 0) { rf.emitT = em.every * (ERY.U.RM ? 3 : 1) * (ERY.Perf.lite ? 2 : 1); em.make(s, bot - 6, top); } }
     if (k === 'fear') {
       /* the light around the Soul shrinks the longer you stay */
       rf.fr = Math.max(150, rf.fr - (dt || .016) * 24);
-      const w = rf.wrap.getBoundingClientRect(), mx = Math.round(rf.mx < 0 ? w.width / 2 : rf.mx - w.left), my = Math.round(rf.my < 0 ? w.height / 2 : rf.my - w.top), fr = Math.round(rf.fr);
+      if (rf.wv !== ERY.Geo.ver) { rf.wv = ERY.Geo.ver; const b = rf.wrap.getBoundingClientRect(); rf.wl = b.left; rf.ww = b.width; }
+      const w = ERY.Geo.rect(rf.wrap), mx = Math.round(rf.mx < 0 ? rf.ww / 2 : rf.mx - rf.wl), my = Math.round(rf.my < 0 ? w.height / 2 : rf.my - w.top), fr = Math.round(rf.fr);
       const key = mx + '|' + my + '|' + fr;
       if (key !== rf.lastF) { rf.lastF = key; rf.fd.style.setProperty('--fx', mx + 'px'); rf.fd.style.setProperty('--fy', my + 'px'); rf.fd.style.setProperty('--fr', fr + 'px'); }
     }
@@ -3834,8 +3967,11 @@ ERY.Sections = (() => {
     tribesDecode(p < .1 ? (p / .1) / 3 : (1 + 2 * tp) / 3);
     biomeAt(tp);
   }
+  /* phones swipe the three biomes sideways: only re-read the swipe when it actually moved */
   function tribesSmallFrame() {
     if (!mqSmall.matches) return;
+    if (!tr.watch) { tr.watch = true; tr.moved = true; tr.track.addEventListener('scroll', () => { tr.moved = true; }, { passive: true }); addEventListener('resize', () => { tr.moved = true; }); }
+    if (!tr.moved) return; tr.moved = false;
     const el = tr.track, max = el.scrollWidth - el.clientWidth, tp = max > 0 ? clamp(el.scrollLeft / max) : 0;
     tr.bar.parentNode.style.setProperty('--tp', tp.toFixed(3)); tribesDecode((1 + 2 * tp) / 3); biomeAt(tp);
   }
@@ -3901,13 +4037,16 @@ ERY.Sections = (() => {
   const ent = { seen: false, wentBack: false, edited: false, slipT: 0, leonT: 0 };
   function entityFrame(t) {
     if (!C.entityEffects || ERY.U.RM || !State.entered) return;
-    const vh = innerHeight, memEl = $('#memtxt'), r = memEl.getBoundingClientRect(), vis = r.top < vh * .8 && r.bottom > vh * .2;
+    if (!ent.mem) Object.assign(ent, { mem: $('#memtxt'), crew: $('#crew'), leon: $('#pol-leon'), h: $('#h1') });
+    const vh = innerHeight, memEl = ent.mem, r = ERY.Geo.rect(memEl), vis = r.top < vh * .8 && r.bottom > vh * .2;
     if (vis) ent.seen = true;
     if (ent.seen && r.top > vh * 1.05) ent.wentBack = true;
     if (ent.wentBack && !ent.edited && r.top < vh * .98 && r.top > 0) { ent.edited = true; memEl.textContent = memEl.textContent.replace(memEl.dataset.from, memEl.dataset.to); }
-    const now = performance.now(), leon = $('#pol-leon'), cs = $('#crew').getBoundingClientRect();
-    if (leon && cs.top < vh * .5 && cs.bottom > vh * .5 && now - State.lastAct > 20000 && now - ent.leonT > 40000) { ent.leonT = now; leon.classList.add('slip'); A('slip'); setTimeout(() => leon.classList.remove('slip'), 140); }
-    if (t > ent.slipT && scrollY < vh * .8) { ent.slipT = t + 60 + Math.random() * 60; const h = $('#h1'); h.classList.add('slip'); setTimeout(() => h.classList.remove('slip'), 150); }
+    /* the entity's touches are slow and deliberate (a slide, not a flash), so nobody mistakes
+       them for the screen flickering; the title one stays off on phones */
+    const now = performance.now(), leon = ent.leon, cs = ERY.Geo.rect(ent.crew);
+    if (leon && cs.top < vh * .5 && cs.bottom > vh * .5 && now - State.lastAct > 20000 && now - ent.leonT > 40000) { ent.leonT = now; leon.classList.add('slip'); A('slip'); setTimeout(() => leon.classList.remove('slip'), 900); }
+    if (!ERY.U.mob && !ERY.Perf.lite && t > ent.slipT && scrollY < vh * .8) { ent.slipT = t + 60 + Math.random() * 60; ent.h.classList.add('slip'); setTimeout(() => ent.h.classList.remove('slip'), 900); }
   }
 
   function init() {
@@ -4443,16 +4582,18 @@ function reveal() {
    so a pulse never forces a whole scene to repaint */
 let beat = 0, lastAudioBeat = -1e9, visNext = 0, lub = true, listenK = 0;
 const colossus = $('#colossus'), heroHearts = $$('#hero .hbeat'), whoGlow = $('#whoGlow'), whoHeart = $('#heart'), bodyfig = $('#bodyfig'), listenBtn = $('#listen');
-const hero = $('#hero'), whoStage = $('#who .stage'), sbStage = $('#soulbody .stage');
-const pulseRing = () => { colossus.classList.remove('beat'); void colossus.offsetWidth; colossus.classList.add('beat'); };
+const hero = $('#hero'), whoSec = $('#who'), sbSec = $('#soulbody'), MOB = ERY.U.mob;
+/* restart the ring's animation without forcing a layout (no offsetWidth read mid-frame) */
+const pulseRing = () => { if (!inView(whoSec)) return; colossus.classList.remove('beat'); requestAnimationFrame(() => colossus.classList.add('beat')); };
 ERY.Audio.onBeat(v => { beat = Math.max(beat, v); lastAudioBeat = performance.now(); if (v === 1) pulseRing(); });
-const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+/* cached positions (ERY.Geo): no layout work in the middle of a frame */
+const inView = el => { const r = ERY.Geo.rect(el); return r.bottom > 0 && r.top < innerHeight; };
 
 /* ---------------------------------------------------------------- SVG ANIMATIONS
    the few SMIL animations left (sand, leaves, bubbles, city lights) only run while their
    chapter is on screen, and not at all in reduced motion or lite mode */
 const smil = $$('main section').map(s => ({ s, on: false, svgs: $$('svg', s).filter(v => !v.ownerSVGElement && v.querySelector('animate,animateMotion,animateTransform') && v.pauseAnimations) })).filter(o => o.svgs.length);
-const smilSync = o => { const run = o.on && !RM() && !ERY.Perf.lite; o.svgs.forEach(v => { try { run ? v.unpauseAnimations() : v.pauseAnimations(); } catch (e) {} }); };
+const smilSync = o => { const run = o.on && !RM() && !ERY.Perf.lite && !MOB; o.svgs.forEach(v => { try { run ? v.unpauseAnimations() : v.pauseAnimations(); } catch (e) {} }); };
 if ('IntersectionObserver' in window) {
   const sio = new IntersectionObserver(es => es.forEach(e => { const o = smil.find(x => x.s === e.target); if (o) { o.on = e.isIntersecting; smilSync(o); } }), { rootMargin: '200px 0px' });
   smil.forEach(o => { smilSync(o); sio.observe(o.s); });
@@ -4487,31 +4628,32 @@ function tick(now) {
   /* heartbeat: audio drives it; without audio a quiet visual clock keeps time */
   if (now - lastAudioBeat > 2200 && now > visNext) { beat = Math.max(beat, lub ? 1 : .7); if (lub) pulseRing(); visNext = now + (lub ? 260 : 1020); lub = !lub; }
   beat *= Math.exp(-dt * 4.2);
-  if (inView(hero)) { const o = (.3 + beat * .7).toFixed(3); heroHearts.forEach(h => { h.style.opacity = o; }); }
-  if (inView(whoStage)) {
+  if (heroHearts.length && inView(hero)) { const o = (.3 + beat * .7).toFixed(3); heroHearts.forEach(h => { h.style.opacity = o; }); }
+  if (inView(whoSec)) {
     listenK = lerp(listenK, ERY.Sections.listening ? 1 : 0, Math.min(1, dt * 3));
     whoGlow.style.opacity = Math.min(1, .35 + beat * .65 + listenK * .3).toFixed(3);
     whoHeart.style.opacity = Math.min(1, .5 + beat * .4 + listenK * .25).toFixed(3);
     whoHeart.style.transform = `translate(-50%,-50%) scale(${(.86 + beat * .24 + listenK * .2).toFixed(3)})`;
     listenBtn.style.setProperty('--beat', beat.toFixed(3));
   }
-  if (inView(sbStage)) bodyfig.style.transform = `translateX(-50%) scale(${(1 + beat * .012).toFixed(4)})`;
+  if (inView(sbSec)) bodyfig.style.transform = `translateX(-50%) scale(${(1 + beat * .012).toFixed(4)})`;
 
-  /* parallax: off for reduced motion and on struggling devices */
-  if (!rm && !lite) {
+  /* parallax: off for reduced motion, on struggling devices and on phones (there the scenery
+     is painted as one piece, see html.mob in the stylesheet) */
+  if (!rm && !lite && !MOB) {
     mx = lerp(mx, mxT, .05); my = lerp(my, myT, .05);
-    const heroH = hero.offsetHeight, sy = Math.min(y, heroH);
+    const heroH = ERY.Geo.rect(hero).height, sy = Math.min(y, heroH);
     if (y < heroH * 1.2) layers.forEach(l => { const d = +l.dataset.d; l.style.transform = `translate3d(${(-mx * d * 60).toFixed(1)}px,${(sy * d * .6 - my * d * 20).toFixed(1)}px,0)`; });
     parallaxOn = true;
   } else if (parallaxOn) { layers.forEach(l => { l.style.transform = ''; }); parallaxOn = false; }
-  if (!rm) {
+  if (!rm && !MOB) {
     const idle = State.entered && now - State.lastAct > 20000 && y < vh * .8;
     watchers.classList.toggle('on', idle);
     if (idle) eyes.forEach(e => { e.style.transform = `translate(${((State.px / innerWidth - .5) * 10).toFixed(1)}px,0)`; });
   }
 
   for (const el of pins) {
-    const r = el.getBoundingClientRect(), range = r.height - vh, p = range > 0 ? clamp(-r.top / range) : 1, id = el.id;
+    const r = ERY.Geo.rect(el), range = r.height - vh, p = range > 0 ? clamp(-r.top / range) : 1, id = el.id;
     if (rm) { if (id === 'tribes') ERY.Sections.tribesDecode(1); if (id === 'who') ERY.Sections.whoFrame(1, dt); continue; }
     if (r.top > vh || r.bottom < 0) continue;
     if (id === 'crash') ERY.Sections.crashFrame(p);
